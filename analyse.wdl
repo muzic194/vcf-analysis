@@ -4,15 +4,14 @@ workflow myWorkflow {
 
 task analyseVcf {
     File inputFile
-    File outputFile
     
     runtime {
         docker: "muzic194/vcf-analyse"
     }
     command {
-        python3 /script/analyse.py ${inputFile} ${outputFile}
+        python3 /script/analyse.py ${inputFile} out.json
     }
     output {
-        String out = "${outputFile}"
+        File out = "out.json"
     }
 }

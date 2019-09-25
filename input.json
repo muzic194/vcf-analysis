@@ -1,4 +1,3 @@
 {
-  "myWorkflow.analyseVcf.inputFile": "data/example.vcf",
-  "myWorkflow.analyseVcf.outputFile": "data/output.json"
+  "myWorkflow.analyseVcf.inputFile": "data/example.vcf"
 }
