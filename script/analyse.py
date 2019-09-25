@@ -1,4 +1,6 @@
 import vcf
+import sys
+import json
 
 def lines_in_vcf(filepath):   
     bashCommand = "wc -l " + filepath
@@ -26,10 +28,17 @@ def variants(filepath):
 
 
 def analyse(filepath):
-    print( {
+    return {
         "number_of_samples": samples(filepath),
         "number_of_variants": variants(filepath)
-    } )
+    }
 
-import sys
-analyse(sys.argv[1])
+def main():
+    input_file = sys.argv[1]
+    output_file = sys.argv[2]
+    result = analyse(input_file)
+    with open(output_file, "w") as file:
+        file.write(json.dumps(result, indent=2))
+
+if __name__ == "__main__":
+    main()
